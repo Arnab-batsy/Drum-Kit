@@ -47,6 +47,17 @@ function Switching(x){;
     }
 }
 
+//Adding animation
+function buttonAnimation(currentKey){
+    var activeButton= document.querySelector("."+currentKey);
+    activeButton.classList.add("pressed");
+    //We use setTimeout function to keep it active only for a short period
+    //parameters- 1.function 2.time in millisecond
+    setTimeout(function(){
+        activeButton.classList.remove("pressed");
+    },200) //It's 100 millisecond
+}
+
 // for(var i=0; i<document.querySelectorAll(".drum").length; i++){
 // document.querySelectorAll(".drum")[i].addEventListener("click", function(){alert("I got Clicked!");}) 
 
@@ -54,6 +65,7 @@ for(var i=0; i<document.querySelectorAll(".drum").length; i++){
     document.querySelectorAll(".drum")[i].addEventListener("click", function(){
         //'this'- Identity of the button that triggered the event listener. Selects current object.
        Switching(this.innerHTML);
+       buttonAnimation(this.innerHTML);
     }) 
     }
 
@@ -65,6 +77,7 @@ document.addEventListener("keydown", function(event){
    //Passing 'event' as parameter to detect the keypress that triggered the event listener
 //Using 'key' attribute to detect the key
     Switching(event.key);
+    buttonAnimation(event.key);
 })
 }
 
